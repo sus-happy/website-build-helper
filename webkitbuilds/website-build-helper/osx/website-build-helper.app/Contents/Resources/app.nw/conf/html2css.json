@@ -1,0 +1,32 @@
+{
+    "ignored": {
+        "tag": [
+            "br",
+            "script"
+        ],
+        "id": [
+            ""
+        ],
+        "class": [
+            ""
+        ]
+    },
+    "remove": {
+        "tag": [
+            "div",
+            "img"
+        ],
+        "id": [
+            ""
+        ],
+        "class": [
+            "clearfix"
+        ]
+    },
+    "indent": {
+        "type": "tab",
+        "num": 1
+    },
+    "lv_step": true,
+    "id_reset": true
+}

@@ -1,0 +1,222 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Website Build Helper</title>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/base.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header class="navbar navbar-default">
+            <h1 class="navbar-brand"><a href="./index.html">Website Build Helper</a></h1>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="html2css.html">HTML2CSS</a></li>
+            </ul>
+        </header>
+
+        <article id="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>HTML2CSS</h1>
+                        <p class="lead">HTMLからCSS定義を生成します。ウィンドウにHTMLファイルをドラッグしても生成出来ます。</p>
+                    </div>
+                </div>
+    
+                <div role="tabpanel">
+
+                    <ul id="select_tab" class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">実行</a></li>
+                        <li><a href="#option" aria-controls="option" role="tab" data-toggle="tab">設定</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result" style="padding-top:10px;">HTML</label>
+                                        <textarea class="form-control" name="reader" id="reader" cols="30" rows="25"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 text-center">
+                                    <div class="form-group" style="padding-top:100px;">
+                                        <button id="convert" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <label for="result" style="padding-top:10px;">CSS</label>
+                                        <textarea class="form-control" name="result" id="result" cols="30" rows="25"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="option">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>例外指定</h3>
+                                    <p>該当のタグ、ID、クラスの要素以下の内容は変換しません。</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">除外タグ</label>
+                                        <textarea class="form-control" name="ig-tags" id="ig-tags" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">除外ID</label>
+                                        <textarea class="form-control" name="ig-ids" id="ig-ids" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">除外クラス</label>
+                                        <textarea class="form-control" name="ig-classes" id="ig-classes" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>非表示指定</h3>
+                                    <p>該当のタグ、ID、クラスの要素はCSSとして表示しません。</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">非表示タグ</label>
+                                        <textarea class="form-control" name="rm-tags" id="rm-tags" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">非表示ID</label>
+                                        <textarea class="form-control" name="rm-ids" id="rm-ids" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="result">非表示クラス</label>
+                                        <textarea class="form-control" name="rm-classes" id="rm-classes" cols="30" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3>CSS生成設定</h3>
+                                    <p>CSS生成時のレイアウト調整。</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>階層化</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="lv_step" id="lv_step" type="checkbox" value="1"> 有効化
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>ID階層リセット</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="id_reset" id="id_reset" type="checkbox" value="1"> 有効化
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>インデント</label>
+
+                                        <div class="form-inline">
+                                            <select id="indent_type" name="indent_type" class="form-control">
+                                                <option value="tab">タブ</option>
+                                                <option value="space">スペース</option>
+                                            </select>
+                                            <select id="indent_num" name="indent_num" class="form-control">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p>
+                                        <button id="revert_btn" class="btn btn-warning">初期化</button>
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="text-right">
+                                        <button id="save_btn" class="btn btn-primary">保存</button>
+                                        <button id="cancel_btn" class="btn btn-default">キャンセル</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </article>
+
+        <div id="save_modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">閉じる</span></button>
+                        <h4 class="modal-title">保存完了</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>設定情報を保存しました。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div id="revert_modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">閉じる</span></button>
+                        <h4 class="modal-title">初期化完了</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>設定情報を初期化しました。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div id="drop_mask"></div>
+
+        <script src="scripts/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="scripts/drag_file.js"></script>
+        <script src="scripts/html2css.js" type="text/javascript"></script>
+    </body>
+</html>

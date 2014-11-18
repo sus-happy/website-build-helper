@@ -1,0 +1,18 @@
+{
+    "name": "website-build-helper",
+    "description": "Website Build Helper",
+    "version": "0.0.1",
+    "main": "index.html",
+    "node-main": "node/script.js",
+    "window": {
+        "toolbar": false,
+        "width": 1024,
+        "height": 768
+    },
+    "scripts": {
+        "start": "nodewebkit"
+    },
+    "devDependencies": {
+        "nodewebkit": "^0.11.0"
+    }
+}

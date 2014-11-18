@@ -1,0 +1,39 @@
+/**
+ * Typo
+ */
+body {
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-top: 5px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+.lead {
+    font-size: 16px;
+}
+
+
+header h1 {
+    margin: 0;
+}
+
+#drop_mask {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,180,.5);
+    display: none;
+    z-index: 1;
+}
